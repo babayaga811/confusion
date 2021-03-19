@@ -10,13 +10,8 @@ function RenderDish(props){
         return(
             <Card>
                 <Card.Image source={require('./images/uthappizza.png')}>
-                    <Card.Title>
-                        <Text style={{textAlignVertical:'center',textAlign:"justify"}}>
-                            {dish.name}
-                        </Text>
-                    </Card.Title>  
+                    <Card.Title>{dish.name}</Card.Title>  
                 </Card.Image>   
-
                 <Text style={{margin: 10}}>
                     {dish.description}
                 </Text>
