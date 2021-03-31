@@ -1,59 +1,80 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { StyleSheet, View, Text, FlatList,Image, StatusBar } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { DISHES } from '../shared/dishes';
 
-function Menu(props) {
 
-    const renderMenuItem = ({item, index}) => {
+class Menu extends Component {
 
-        return (
+    constructor(props){
+        super(props);
+        this.state = {
+            dishes: DISHES
+        };
 
-            <View style={styles.bigbox}>
-                
-                <View style={{flex: 1, borderRadius: 10, 
-                backgroundColor: 'green',
-                flexDirection: 'row',
-                justifyContent:'center',
-                alignSelf: 'center'}} >
-                <TouchableOpacity onPress={()=>props.onPress(item.id)}>
+        // const{navigation}=this.props;
+    }
 
-                <Image style={styles.image} 
-                source={require('./images/uthappizza.png')}
+    static navigationOptions = {
+        title:'Menu',
 
-                />
-                </TouchableOpacity>
-                </View>
-        
-                <View style={{flex: 5, borderRadius: 10, backgroundColor: 'green',
-                  justifyContent:'space-evenly', marginTop: 2,marginBottom: 2,}}> 
-                    <Text style={{backgroundColor: 'green',padding: 3, color:'white'}}>{item.name} </Text>
-                    <Text style={{backgroundColor: 'green',padding: 2}}>{item.description}</Text>
-                </View>
-          
-                <View style={{flex: 0.2, borderRadius: 10, 
-                backgroundColor: '#b1b951',
-                flexDirection: 'row',
-                justifyContent:'center',
-                alignSelf: 'center'}}>
-                </View>
-        
-            </View>
-                
-        );
     };
 
-    return (
+
+    
+    render() {
+
+        const { navigate } = this.props.navigation;
+
+        const renderMenuItem = ({item, index}) => {
+
+            return (
+    
+                <View style={styles.bigbox}>
+                    
+                    <View style={{flex: 1, borderRadius: 10, 
+                    backgroundColor: 'green',
+                    flexDirection: 'row',
+                    justifyContent:'center',
+                    alignSelf: 'center'}} >
+                    <TouchableOpacity onPress={()=> navigate('Dishdetail', {dishId: item.id})}>
+    
+                    <Image style={styles.image} 
+                    source={require('./images/uthappizza.png')}
+    
+                    />
+                    </TouchableOpacity>
+                    </View>
+            
+                    <View style={{flex: 5, borderRadius: 10, backgroundColor: 'green',
+                      justifyContent:'space-evenly', marginTop: 2,marginBottom: 2,}}> 
+                        <Text style={{backgroundColor: 'green',padding: 3, color:'white'}}>{item.name} </Text>
+                        <Text style={{backgroundColor: 'green',padding: 2}}>{item.description}</Text>
+                    </View>
+              
+                    <View style={{flex: 0.2, borderRadius: 10, 
+                    backgroundColor: '#b1b951',
+                    flexDirection: 'row',
+                    justifyContent:'center',
+                    alignSelf: 'center'}}>
+                    </View>
+            
+                </View>
+                    
+            );
+        };
+
+    
+        return (
         
             <FlatList 
-                data={props.dishes}
+                data={this.state.dishes}
                 renderItem={renderMenuItem}
                 keyExtractor={item => item.id.toString()}
                 />
-        // <View style={styles.container}>
-        // <Text>Open up App.js to start working on your app!{props.dishes[1]} Yay</Text>
-        // </View>
-    );
+       
+        );
+    }
 }
 
 const styles = StyleSheet.create({
