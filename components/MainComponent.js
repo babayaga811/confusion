@@ -26,13 +26,13 @@ function MyMenuStack()
 }
 
 
-function Welcome() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Welcome to Home component</Text>
-    </View>
-  );
-}
+// function Welcome() {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>Welcome to Home component</Text>
+//     </View>
+//   );
+// }
 
 
 const HomeNavigator = createStackNavigator()
@@ -41,7 +41,7 @@ function MyHomeStack()
 {
   return (
     <HomeNavigator.Navigator>
-      <HomeNavigator.Screen name='Home' component={ Welcome } />
+      <HomeNavigator.Screen name='Home' component={ Home } />
   
     </HomeNavigator.Navigator>
   )

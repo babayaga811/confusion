@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text,Image } from 'react-native';
 import { Card } from 'react-native-elements';
 import { DISHES} from '../shared/dishes';
-import { RouteProp } from '@react-navigation/native';
+
 
 function RenderDish(props){
 
