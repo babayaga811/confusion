@@ -12,7 +12,7 @@ class Menu extends Component {
             dishes: DISHES
         };
 
-        // const{navigation}=this.props;
+       
     }
 
     static navigationOptions = {

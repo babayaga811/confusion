@@ -9,6 +9,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 // import ExpoStatusBar from 'expo-status-bar/build/ExpoStatusBar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import CorporateLeader from './LeaderComponent';
+import  ContactUsComponent  from './ContactUsComponent';
 
 const MenuNavigator = createStackNavigator()
 
@@ -25,16 +27,6 @@ function MyMenuStack()
   )
 }
 
-
-// function Welcome() {
-//   return (
-//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Welcome to Home component</Text>
-//     </View>
-//   );
-// }
-
-
 const HomeNavigator = createStackNavigator()
 
 function MyHomeStack()
@@ -42,12 +34,30 @@ function MyHomeStack()
   return (
     <HomeNavigator.Navigator>
       <HomeNavigator.Screen name='Home' component={ Home } />
-  
     </HomeNavigator.Navigator>
   )
 }
 
+const AboutNavigator = createStackNavigator()
 
+function MyAboutStack(){
+
+  return(
+    <AboutNavigator.Navigator>
+    <AboutNavigator.Screen name='About' component={ CorporateLeader }/>
+    </AboutNavigator.Navigator>
+  )
+}
+
+const ContactNavigator = createStackNavigator()
+
+function ContactUs(){
+  return(
+  <ContactNavigator.Navigator>
+    <ContactNavigator.Screen name= "Contact Us" component= { ContactUsComponent }/>
+  </ContactNavigator.Navigator>
+  )
+}
 
 const MainNavigator = createDrawerNavigator ();
 
@@ -57,24 +67,11 @@ function MyMainDrawer()
     <MainNavigator.Navigator>
       <MainNavigator.Screen name= "Home" component ={MyHomeStack}/>
       <MainNavigator.Screen name= "Menu" component ={MyMenuStack}/>
+      <MainNavigator.Screen name= "About Us" component={MyAboutStack}/>
+      <MainNavigator.Screen name= "Contact Us" component={ContactUs}/>
     </MainNavigator.Navigator>
   )
 }
-
-//   Menu: {screen: Menu},
-//   Dishdetail: { screen: Dishdetail }
-// },{
-//     initialRouteName: 'Menu',
-//     navigationOptions: {
-//       headerStyle: {
-//         backgroundColor: '#512DA8'
-//       },
-//       headerTintColor: '#fff',
-//       headerTitleStyle: { 
-//         color: "#fff"
-//       }
-//     }
-// })
 
 
 class Main extends Component {
